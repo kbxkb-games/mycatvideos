@@ -1,0 +1,259 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "mycatvideos-apis",
+    "description" : "Created by AWS Lambda",
+    "version" : "2022-12-11 15:39:25UTC"
+  },
+  "servers" : [ {
+    "url" : "https://96b81twyx1.execute-api.us-east-1.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "qa"
+      }
+    }
+  } ],
+  "paths" : {
+    "/mcvCreateAccount" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /mcvCreateAccount"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvCreateAccount/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "post" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for POST /mcvCreateAccount"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvCreateAccount/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "options" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for OPTIONS /mcvCreateAccount"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvCreateAccount/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "x-amazon-apigateway-any-method" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for ANY /mcvCreateAccount"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvCreateAccount/invocations",
+          "connectionType" : "INTERNET"
+        }
+      }
+    },
+    "/mcvGetVideos" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /mcvGetVideos"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvGetVideos/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "post" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for POST /mcvGetVideos"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvGetVideos/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "options" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for OPTIONS /mcvGetVideos"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvGetVideos/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "x-amazon-apigateway-any-method" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for ANY /mcvGetVideos"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvGetVideos/invocations",
+          "connectionType" : "INTERNET"
+        }
+      }
+    },
+    "/mcvLogin" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /mcvLogin"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogin/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "post" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for POST /mcvLogin"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogin/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "options" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for OPTIONS /mcvLogin"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogin/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "x-amazon-apigateway-any-method" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for ANY /mcvLogin"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogin/invocations",
+          "connectionType" : "INTERNET"
+        }
+      }
+    },
+    "/mcvLogout" : {
+      "get" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for GET /mcvLogout"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogout/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "post" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for POST /mcvLogout"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogout/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "options" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for OPTIONS /mcvLogout"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogout/invocations",
+          "connectionType" : "INTERNET"
+        }
+      },
+      "x-amazon-apigateway-any-method" : {
+        "responses" : {
+          "default" : {
+            "description" : "Default response for ANY /mcvLogout"
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "payloadFormatVersion" : "1.0",
+          "type" : "aws_proxy",
+          "httpMethod" : "POST",
+          "uri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:483819123724:function:mcvLogout/invocations",
+          "connectionType" : "INTERNET"
+        }
+      }
+    }
+  },
+  "x-amazon-apigateway-cors" : {
+    "allowMethods" : [ "GET", "OPTIONS", "POST", "PUT" ],
+    "allowHeaders" : [ "content-type", "x-api-id", "x-api-key" ],
+    "exposeHeaders" : [ "content-type" ],
+    "maxAge" : 86400,
+    "allowCredentials" : false,
+    "allowOrigins" : [ "*" ]
+  },
+  "x-amazon-apigateway-importexport-version" : "1.0"
+}
