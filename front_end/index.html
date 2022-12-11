@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>My Cat Videos</title>
+		<link rel="stylesheet" href="./styles.css">
+		<script>
+			function showMessage(message, isError) {
+				const commsArea = document.getElementById("error-msg");
+				commsArea.innerHTML = message;
+				commsArea.style.color = isError ? "#8a0000" : "#38761d";
+				commsArea.style.backgroundColor = isError ? "#e58f8f" : "#D9EAD3";
+				commsArea.style.opacity = 1;
+			};
+			function hideMessage() {
+				document.getElementById("error-msg").style.opacity = 0;
+			};
+			function createAccount() {
+				hideMessage();
+				var strUserid = document.getElementById('mycatvideos-username-field').value;
+				var strPassword = document.getElementById('mycatvideos-password-field').value;
+				if (!strUserid) {
+					showMessage("Userid cannot be empty!", true);
+				} else if (!strPassword) {
+					showMessage("Password cannot be empty!", true);
+				} else {
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST", "https://96b81twyx1.execute-api.us-east-1.amazonaws.com/qa/mcvCreateAccount", true);
+
+					xhttp.onreadystatechange = () => {
+						if (xhttp.readyState === XMLHttpRequest.DONE) {
+							showMessage(xhttp.responseText.replaceAll("^\"|\"$", ""), xhttp.status >= 400);
+						}
+					};
+					xhttp.setRequestHeader("x-api-key", "blah1");
+					xhttp.setRequestHeader("x-api-id", "blah2");
+					xhttp.setRequestHeader("Content-Type", "application/json");
+					var params = {
+						"userid":strUserid,
+						"password":strPassword,
+					};
+					xhttp.send(JSON.stringify(params));
+					//xhttp.send();
+				}
+			};
+			function logUserInOut() {
+				hideMessage();
+				const logInOutButton = document.getElementById("my-log-in-out-button");
+				if (logInOutButton.innerHTML == "Log In") {
+					var strUserid = document.getElementById('mycatvideos-username-field').value;
+					var strPassword = document.getElementById('mycatvideos-password-field').value;
+					if (!strUserid) {
+						showMessage("Userid cannot be empty!", true);
+					} else if (!strPassword) {
+						showMessage("Password cannot be empty!", true);
+					} else {
+						var xhttp = new XMLHttpRequest();
+						xhttp.open("POST", "https://96b81twyx1.execute-api.us-east-1.amazonaws.com/qa/mcvLogin", true);
+
+						xhttp.onreadystatechange = () => {
+							if (xhttp.readyState === XMLHttpRequest.DONE) {
+								showMessage(xhttp.responseText.replaceAll("^\"|\"$", ""), xhttp.status >= 400);
+								if (xhttp.status < 400 || xhttp.status == 406) {
+									logInOutButton.innerHTML = "Log Out";
+									document.getElementById('mycatvideos-username-field').value = "";
+									document.getElementById('mycatvideos-password-field').value = "";
+									document.getElementById('logged-in-userid').innerHTML = strUserid;
+									window.localStorage.setItem('logged-in-userid', strUserid);
+									window.location = './secure_area.html';
+								}
+							}
+						};
+						xhttp.setRequestHeader("x-api-key", "blah1");
+						xhttp.setRequestHeader("x-api-id", "blah2");
+						xhttp.setRequestHeader("Content-Type", "application/json");
+						var params = {
+							"userid":strUserid,
+							"password":strPassword,
+						};
+						xhttp.send(JSON.stringify(params));
+						//xhttp.send();
+					}
+				} else if (logInOutButton.innerHTML == "Log Out") {
+					var strUserid = document.getElementById('logged-in-userid').innerHTML;
+					if (!strUserid) {
+						showMessage("Userid cannot be empty!", true);
+					} else {
+						var xhttp = new XMLHttpRequest();
+						xhttp.open("POST", "https://96b81twyx1.execute-api.us-east-1.amazonaws.com/qa/mcvLogout", true);
+
+						xhttp.onreadystatechange = () => {
+							if (xhttp.readyState === XMLHttpRequest.DONE) {
+								showMessage(xhttp.responseText.replaceAll("^\"|\"$", ""), xhttp.status >= 400);
+								if (xhttp.status < 400) {
+									logInOutButton.innerHTML = "Log In";
+									document.getElementById('logged-in-userid').innerHTML = "";
+								}
+							}
+						};
+						xhttp.setRequestHeader("x-api-key", "blah1");
+						xhttp.setRequestHeader("x-api-id", "blah2");
+						xhttp.setRequestHeader("Content-Type", "application/json");
+						var params = {
+							"userid":strUserid,
+						};
+						xhttp.send(JSON.stringify(params));
+						//xhttp.send();
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<main id="main-holder">
+			<h1><span id="my-demo">This is the homepage of mycatvideos.com!</span></h1>
+			<h1 id="mycatvideos-header">Create Account / Log In Or Out</h1>
+			<input type="text" name="mycatvideos-username" id="mycatvideos-username-field" class="text-field" placeholder="Username">
+			<input type="password" name="mycatvideos-password" id="mycatvideos-password-field" class="text-field" placeholder="Password">
+			<button id="my-create-account-button" onclick="createAccount()">Create Account</button>
+			<button id="my-log-in-out-button" onclick="logUserInOut()">Log In</button>
+
+			<div id="error-msg-holder">
+				<p id="error-msg"><span id="error-msg-second-line"></span></p>
+				<p id="logged-in-userid"><span id="logged-in-userid-msg-second-line"></span></p>
+			</div>
+		</main>
+	</body>
+</html>
