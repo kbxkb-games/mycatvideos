@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+			function fetchParams() {
+				hideMessage();
+				window.loggedInUserId = window.localStorage.getItem('logged-in-userid');
+				window.localStorage.clear();
+				getAddressBookData("https://96b81twyx1.execute-api.us-east-1.amazonaws.com/qa/mcvGetVideos?userid=" + window.loggedInUserId);
+			};
+			window.onload = fetchParams;
+			// Defining async function
+			async function getAddressBookData(url) {
+			    // Storing response
+			    const response = await fetch(url);
+			    
+			    // Storing data in form of JSON
+			    var data = await response.json();
+			    if (response) {
+			        hideloader();
+			    }
+			    show(JSON.parse(data));
+			};
+			function hideloader() {
+			    document.getElementById('loading').style.display = 'none';
+			};
+			// Function to define innerHTML for HTML table
+			function show(data) {
+			    let tab = 
+			        `<tr>
+			          <th>Name</th>
+			          <th>Number</th>
+			          <th>Email</th>
+			         </tr>`;
+			    
+			    // Loop to access all rows
+			    for(let i = 0; i < data.length; i++) {
+				    let obj = data[i];
+				    tab += `<tr> 
+							    <td>${obj.name} </td>
+							    <td>${obj.number}</td>
+							    <td>${obj.email}</td>
+							</tr>`;
+				}
+			    // Setting innerHTML as tab variable
+			    document.getElementById("address-book").innerHTML = tab;
+			};
+			function showMessage(message, isError) {
+				const commsArea = document.getElementById("error-msg");
+				commsArea.innerHTML = message;
+				commsArea.style.color = isError ? "#8a0000" : "#38761d";
+				commsArea.style.backgroundColor = isError ? "#e58f8f" : "#D9EAD3";
+				commsArea.style.opacity = 1;
+			};
+			function hideMessage() {
+				document.getElementById("error-msg").style.opacity = 0;
+			};
+			function logUserOut() {
+				hideMessage();
+				const logOutButton = document.getElementById("my-log-out-button");
+				var strUserid = window.loggedInUserId;
+				if (!strUserid) {
+					showMessage("Userid cannot be empty!", true);
+				} else {
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST", "https://96b81twyx1.execute-api.us-east-1.amazonaws.com/qa/mcvLogout", true);
+
+					xhttp.onreadystatechange = () => {
+						if (xhttp.readyState === XMLHttpRequest.DONE) {
+							showMessage(xhttp.responseText.replaceAll("^\"|\"$", ""), xhttp.status >= 400);
+							if (xhttp.status < 400) {
+								document.getElementById("address-book").innerHTML = "";
+								logOutButton.disabled = true;
+								window.location = './index.html';
+							}
+						}
+					};
+					xhttp.setRequestHeader("x-api-key", "blah1");
+					xhttp.setRequestHeader("x-api-id", "blah2");
+					xhttp.setRequestHeader("Content-Type", "application/json");
+					var params = {
+						"userid":strUserid,
+					};
+					xhttp.send(JSON.stringify(params));
+					//xhttp.send();
+				}
+			};
+		</script>
+        <link rel="stylesheet" href="./styles.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0" />
+        <title>My Cat Videos Secure Area</title>
+    </head>
+    <body>
+    	<main id="main-holder">
+			<h1><span id="my-demo">This is the secure area of mycatvideos.com!</span></h1>
+			<h1 id="mycatvideos-header">Your Current Address Book</h1>
+			<div class="spinner-border" role="status" id="loading">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <table id="address-book" border="1"></table>
+            <button id="my-log-out-button" onclick="logUserOut()">Log Out</button>
+			<div id="error-msg-holder">
+				<p id="error-msg"><span id="error-msg-second-line"></span></p>
+			</div>
+		</main>
+    </body>
+</html>
